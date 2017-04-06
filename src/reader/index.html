@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <title>QR Login</title>
+
+    <link rel="shortcut icon" href="assets/images/logo.png" />
+
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+
+    <link href="assets/css/app.min.css" rel="stylesheet">
+
+    <body id="client-app" ng-app="MyReaderApp" ng-class="{'auth':isAuth}" ng-controller="reader.controller">
+
+      <h1 class="title">QR Validation Demo</h1>
+
+      <div class="content container">
+
+        <div class="video-display" ng-show="isReaderReady">
+          <span class="qr-placeholder"></span>
+          <webcam style="width: 100%;" on-stream="onStream(stream)" channel="channel"></webcam>
+          <canvas style="display: none" width="300" height="300" id="qr-canvas"></canvas>
+        </div>
+
+        <div ng-bind="readerStatus" class="status"></div>
+
+        <button class="qr-button" ng-if="isAuth" ng-click="restart()">Restart</button>
+
+      </div>
+
+        <!-- Angular Base -->
+
+      <script src="lib/angular/angular.min.js"></script>
+      <script src="lib/webcam/dist/webcam.min.js"></script>
+      
+      <!-- app's js -->
+
+      <script src="src/app.js"></script>
+      <script src="src/controllers/reader.controller.js"></script>
+
+      <script src="services/auth.service.js"></script>
+      <script src="services/config.service.js"></script>
+
+      <!-- Dependencies build it using npm run build -->
+
+      <script src="assets/js/jsqrcode.min.js"></script>
+
+
+    </body>
+
+</html>

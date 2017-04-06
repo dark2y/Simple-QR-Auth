@@ -1,7 +1,7 @@
 {
-  "name": "angular-seed",
+  "name": "qr-auth-reader",
   "description": "A starter project for AngularJS",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/angular/angular-seed",
   "license": "MIT",
   "private": true,
@@ -11,6 +11,7 @@
     "angular-loader": "~1.5.0",
     "angular-mocks": "~1.5.0",
     "html5-boilerplate": "^5.3.0",
-    "angular-qrcode": "^7.2.0"
+    "webcam": "webcam-directive#^3.1.1",
+    "jsqrcode": "git://github.com/LazarSoft/jsqrcode.git"
   }
 }

@@ -1,0 +1,42 @@
+/**
+	* Client shared stile
+*/
+
+#client-app {
+  .video-display {
+    display: none;
+    position: relative;
+    margin: 0 auto;
+    display: block;
+    height: 240px;
+    width: 320px;
+    margin-top: 20px;
+    border-radius: 4px;
+    box-shadow: 0 1px 7px -2px #000;
+    background: #000;
+    overflow: hidden;
+    max-width: 320px;
+    video {
+      height: 100%;
+      width: 100%;
+      margin-right: 0px;
+    }
+    .qr-placeholder {
+      display: block;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: #fff url(../images/qrcode-branded.png) no-repeat;
+      background-position: center center;
+      background-size: 62%;
+      opacity: 0.3
+    }
+  }
+  .status {
+    display: block;
+    max-width: 370px;
+    margin: 20px auto;
+  }
+}

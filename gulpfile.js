@@ -35,38 +35,25 @@ gulp.task('watch', ['sass'], function () {
   gulp.watch(paths.sass, ['sass']);
 });
 
-gulp.task('build-webcam', function(done){
-  gulp.src([
-      './shared/lib/webcam.js',
-    ])
-    .pipe(sourcemaps.init())
-    .pipe(concat('webcam.min.js'))
-    .pipe(gulp.dest('./shared/assets/js/'))
-    .pipe(uglify())
-    .pipe(sourcemaps.write("/"))
-    .pipe(gulp.dest('./shared/assets/js/'))
-    .on('end', done);
-});
-
 gulp.task('build-qr', function (done) {
   gulp.src([
-      './client/lib/jsqrcode/src/grid.js',
-      './client/lib/jsqrcode/src/version.js',
-      './client/lib/jsqrcode/src/formatinf.js',
-      './client/lib/jsqrcode/src/detector.js',
-      './client/lib/jsqrcode/src/errorlevel.js',
-      './client/lib/jsqrcode/src/bitmat.js',
-      './client/lib/jsqrcode/src/datablock.js',
-      './client/lib/jsqrcode/src/bmparser.js',
-      './client/lib/jsqrcode/src/datamask.js',
-      './client/lib/jsqrcode/src/rsdecoder.js',
-      './client/lib/jsqrcode/src/gf256poly.js',
-      './client/lib/jsqrcode/src/gf256.js',
-      './client/lib/jsqrcode/src/decoder.js',
-      './client/lib/jsqrcode/src/qrcode.js',
-      './client/lib/jsqrcode/src/findpat.js',
-      './client/lib/jsqrcode/src/alignpat.js',
-      './client/lib/jsqrcode/src/databr.js'
+      './src/reader/lib/jsqrcode/src/grid.js',
+      './src/reader/lib/jsqrcode/src/version.js',
+      './src/reader/lib/jsqrcode/src/formatinf.js',
+      './src/reader/lib/jsqrcode/src/detector.js',
+      './src/reader/lib/jsqrcode/src/errorlevel.js',
+      './src/reader/lib/jsqrcode/src/bitmat.js',
+      './src/reader/lib/jsqrcode/src/datablock.js',
+      './src/reader/lib/jsqrcode/src/bmparser.js',
+      './src/reader/lib/jsqrcode/src/datamask.js',
+      './src/reader/lib/jsqrcode/src/rsdecoder.js',
+      './src/reader/lib/jsqrcode/src/gf256poly.js',
+      './src/reader/lib/jsqrcode/src/gf256.js',
+      './src/reader/lib/jsqrcode/src/decoder.js',
+      './src/reader/lib/jsqrcode/src/qrcode.js',
+      './src/reader/lib/jsqrcode/src/findpat.js',
+      './src/reader/lib/jsqrcode/src/alignpat.js',
+      './src/reader/lib/jsqrcode/src/databr.js'
     ])
     .pipe(sourcemaps.init())
     .pipe(concat('jsqrcode.min.js'))

@@ -1,71 +1,41 @@
-body {
-  padding: 10px;
-	text-align: center;
-}
-
 /**
-	* Client shared stile
+* The main sass
 */
 
-#client-app {
-  .video-display {
-    display: none;
-    position: relative;
-    margin: 0 auto;
-    display: block;
-    height: 240px;
-    width: 320px;
-    overflow: hidden;
-    margin-top: 20px;
-    video {
-      width: 99%;
-      height: 99%;
-      border: 2px solid #c0c0c0;
-      border-radius: 6px;
-    }
-    canvas {
-      display: none;
-    }
-    .qr-placeholder {
-      display: block;
-      height: 240px;
-      width: 320px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: #fff url(../images/qr-placeholder.jpg) no-repeat;
-      background-position: center center;
-      background-size: 62%;
-      opacity: 0.2;
-    }
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700);
+
+body {
+  padding: 5px 0;
+  text-align: center;
+  background: #f1f1f1;
+  font-family: "Open Sans", sans-serif;
+  color: #6b6b6b;
+  transition: background 0.2s ease-in-out;
+  &.auth {
+    background: #ddf8d4;
   }
-  .status {
+  h1 {
+    font-size: 36px;
+    font-weight: bold;
+    color: #666666;
+    margin-bottom: 30px;
+  }
+  button {
+    background: #fff;
+    border: 2px solid #d5d5d5;
+    padding: 10px 20px;
+    border-radius: 6px;
+    color: #d31e1e;
     display: block;
-    max-width: 370px;
-    margin: 10px auto;
+    text-transform: uppercase;
+    margin: 0 auto;
   }
 }
+
 
 /**
-  * Server display style
- */
+* SASS dependencies
+*/
 
-#server-app {
-  .congrats {
-    margin: 40px 0px;
-		img{
-			max-width: 90%;
-		}
-  }
-  qrcode {
-    display: block;
-    margin: 40px auto;
-    width: 400px;
-    border: 2px solid #d5d5d5;
-    padding: 8px;
-    max-width: 90%;
-    canvas {
-      width: 100%;
-    }
-  }
-}
+@import "app.client";
+@import "app.server";

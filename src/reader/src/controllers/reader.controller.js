@@ -12,7 +12,7 @@ app.controller("reader.controller", function ($rootScope, $scope, $interval, Aut
 
   // The status is reflected in the scope
   $scope.isReaderReady = false;
-  $scope.readerStatus = "Point your phone at the screen"
+  $scope.readerStatus = "Point the QR code twords the camera!"
 
   var onDetected = function(token){
       $scope.readerStatus = "Your code is " + token + "";
@@ -21,7 +21,7 @@ app.controller("reader.controller", function ($rootScope, $scope, $interval, Aut
              $scope.readerStatus = r.error;
              return;
           }
-          $scope.readerStatus = "Your secret key is " + r.private + "";
+          $scope.readerStatus = "Congrats! Your secret key is " + r.private + "";
           $scope.isAuth = true;
           $scope.private = r.private;
       })
@@ -59,7 +59,7 @@ app.controller("reader.controller", function ($rootScope, $scope, $interval, Aut
 
   $scope.onStream = function (stream) {
 
-    console.log('started',stream);
+    console.log('Stream Started',stream);
 
     // Initialise the vide and canvas elements
     video = document.getElementsByTagName("video")[0];
@@ -68,6 +68,13 @@ app.controller("reader.controller", function ($rootScope, $scope, $interval, Aut
     $scope.isReaderReady = true;
     refreshInterval = $interval(onRefresh,refreshRate);
 
+  }
+
+  $scope.restart = function(){
+    $scope.isAuth = false;
+    $scope.private = null;
+    refreshInterval = $interval(onRefresh,refreshRate);
+    video.play();
   }
   
 });

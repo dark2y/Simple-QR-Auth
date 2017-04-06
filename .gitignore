@@ -7,3 +7,5 @@ client/lib/*
 server/lib/*
 
 .node-persist
+npm-debug.log
+resources

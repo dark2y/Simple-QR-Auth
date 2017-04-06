@@ -11,7 +11,6 @@ app.service("AuthService", function ($http, $q, SETTINGS) {
       url: SETTINGS.Authority + "/" + name,
       params: parameters,
     }).then(function (response) {
-      //console.log(name, response.data);
       deferred.resolve(response.data);
     }, deferred.reject);
 
@@ -21,9 +20,7 @@ app.service("AuthService", function ($http, $q, SETTINGS) {
   
   this.generate = function (private) {
     var deferred = $q.defer();
-    getServerResponse("generate", {
-      "s": private
-    }).then(function (response) {
+    getServerResponse("generate").then(function (response) {
       deferred.resolve(response.public);
     });
     return deferred.promise;

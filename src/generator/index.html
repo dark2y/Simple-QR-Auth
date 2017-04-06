@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <title>QR Code Demo</title>
+    <title>QR Generator</title>
 
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
     <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+
+    <link rel="shortcut icon" href="assets/images/logo.png" />
 
     <link href="assets/css/app.min.css" rel="stylesheet">
 
@@ -27,18 +29,23 @@
 
   </head>
 
-  <body ng-controller="index.controller" id="server-app">
+  <body ng-controller="generator.controller" ng-class="{'auth':isAuth}" id="server-app">
 
     <h1 class="title">QR Generation Demo</h1>
 
-    <div ng-if="!isUsed" class="qr-holder">
-      <qrcode data="/{{ token }}/" version="3" error-correction-level="M" size="500" color="#de411b" background="#fff"></qrcode>
+    <div ng-if="!isAuth" class="qr-holder">
 
-      <button ng-click="refreshCode()">Refresh Code</button>
+      <qrcode data="/{{ token }}/" version="3" error-correction-level="M" size="500" color="#de411b" background="#fff" ></qrcode>
+
+      <button class="qr-button" ng-click="refreshCode()">Refresh Code</button>
 
     </div>
 
-    <div ng-if="isUsed" class="congrats"><img src="assets/images/selfie-smiley.png"></div>
+    <div ng-if="isAuth" class="congrats">
+      <img src="assets/images/ok.png">
+      <div class="congrats">Congrats, your secret key is {{ secret }}</div>
+      <button class="qr-button" ng-click="restart()">Restart</button>
+    </div>
 
     <!-- 
     One page app so we can just have them as files.
@@ -46,7 +53,7 @@
   -->
 
     <script src="src/app.js?v=213"></script>
-    <script src="src/controllers/index.controller.js"></script>
+    <script src="src/controllers/generator.controller.js"></script>
 
     <script src="services/auth.service.js"></script>
     <script src="services/config.service.js"></script>
