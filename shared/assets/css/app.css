@@ -1,0 +1,57 @@
+body {
+  padding: 10px;
+  text-align: center; }
+
+/**
+	* Client shared stile
+*/
+#client-app .video-display {
+  display: none;
+  position: relative;
+  margin: 0 auto;
+  display: block;
+  height: 240px;
+  width: 320px;
+  overflow: hidden;
+  margin-top: 20px; }
+  #client-app .video-display video {
+    width: 99%;
+    height: 99%;
+    border: 2px solid #c0c0c0;
+    border-radius: 6px; }
+  #client-app .video-display canvas {
+    display: none; }
+  #client-app .video-display .qr-placeholder {
+    display: block;
+    height: 240px;
+    width: 320px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: #fff url(../images/qr-placeholder.jpg) no-repeat;
+    background-position: center center;
+    background-size: 62%;
+    opacity: 0.2; }
+
+#client-app .status {
+  display: block;
+  max-width: 370px;
+  margin: 10px auto; }
+
+/**
+  * Server display style
+ */
+#server-app .congrats {
+  margin: 40px 0px; }
+  #server-app .congrats img {
+    max-width: 90%; }
+
+#server-app qrcode {
+  display: block;
+  margin: 40px auto;
+  width: 400px;
+  border: 2px solid #d5d5d5;
+  padding: 8px;
+  max-width: 90%; }
+  #server-app qrcode canvas {
+    width: 100%; }

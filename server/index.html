@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="MyApp">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>QR Code Demo</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- this also comes with javscripts but we don't need it ( plus it requires jQuery )  -->
+
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/normalize.css">
+    <link rel="stylesheet" href="lib/html5-boilerplate/dist/css/main.css">
+
+    <link href="assets/css/app.min.css" rel="stylesheet">
+
+    <script src="lib/angular/angular.min.js"></script>
+    <script src="lib/angular-route/angular-route.min.js"></script>
+
+    <script src="lib/angular-qrcode/angular-qrcode.js"></script>
+    <script src="lib/qrcode-generator/js/qrcode.js"></script>
+    <script src="lib/qrcode-generator/js/qrcode_UTF8.js"></script>
+
+  </head>
+
+  <body ng-controller="index.controller" id="server-app">
+
+    <h1 class="title">QR Generation Demo</h1>
+
+    <div ng-if="!isUsed" class="qr-holder">
+      <qrcode data="/{{ token }}/" version="3" error-correction-level="M" size="500" color="#de411b" background="#fff"></qrcode>
+
+      <button ng-click="refreshCode()">Refresh Code</button>
+
+    </div>
+
+    <div ng-if="isUsed" class="congrats"><img src="assets/images/selfie-smiley.png"></div>
+
+    <!-- 
+    One page app so we can just have them as files.
+    Also angular-route or any other routing mecahism is not needed
+  -->
+
+    <script src="src/app.js?v=213"></script>
+    <script src="src/controllers/index.controller.js"></script>
+
+    <script src="services/auth.service.js"></script>
+    <script src="services/config.service.js"></script>
+
+
+  </body>
+
+</html>
