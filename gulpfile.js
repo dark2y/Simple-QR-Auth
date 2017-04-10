@@ -9,12 +9,19 @@ var sh = require('shelljs');
 
 var uglify = require("gulp-uglify");
 var sourcemaps = require("gulp-sourcemaps");
+var bower = require('gulp-bower');
 
 var paths = {
   sass: ['./shared/scss/**/*.scss']
 };
 
 gulp.task('default', ['sass']);
+
+gulp.task('install',["sass"], function(done){
+   bower({ cwd: './src/generator' })
+   .pipe(bower({ cwd: './src/reader'  }))
+   .on('end',done);
+});
 
 gulp.task('sass', function (done) {
   gulp.src('./shared/scss/app.scss')
@@ -29,7 +36,7 @@ gulp.task('sass', function (done) {
     }))
     .pipe(gulp.dest('./shared/assets/css/'))
     .on('end', done);
-});
+})
 
 gulp.task('watch', ['sass'], function () {
   gulp.watch(paths.sass, ['sass']);

@@ -1,10 +1,19 @@
 app.service("AuthService", function ($http, $q, SETTINGS) {
 
-  var gateway = "192.168.179.129:3002";
-
+  /**
+   * This private function handles the send / recive. 
+   * We could have used $resource if we are 100% the service is REST
+   * @param {string} name 
+   * @param {object} parameters 
+   */
   var getServerResponse = function (name, parameters) {
 
     var deferred = $q.defer();
+
+    var onHttpError = function (err) {
+      console.error("HTTP ERROR: Check the 'config.js' file");
+      return;
+    }
 
     $http({
       method: 'GET',
@@ -12,12 +21,15 @@ app.service("AuthService", function ($http, $q, SETTINGS) {
       params: parameters,
     }).then(function (response) {
       deferred.resolve(response.data);
-    }, deferred.reject);
+    }, onHttpError);
 
     return deferred.promise;
 
   }
-  
+
+  /**
+   * Public function for generation of new tokens
+   */
   this.generate = function (private) {
     var deferred = $q.defer();
     getServerResponse("generate").then(function (response) {
@@ -26,7 +38,10 @@ app.service("AuthService", function ($http, $q, SETTINGS) {
     return deferred.promise;
   }
 
-   this.get = function (public) {
+  /**
+   * Get's information about a sepecifc token
+   */
+  this.get = function (public) {
     var deferred = $q.defer();
     getServerResponse("get", {
       "t": public
@@ -36,6 +51,9 @@ app.service("AuthService", function ($http, $q, SETTINGS) {
     return deferred.promise;
   }
 
+  /**
+   * Updates a token setting it's status to valid
+   */
   this.validate = function (public) {
     var deferred = $q.defer();
     getServerResponse("validate", {

@@ -1,8 +1,11 @@
 'use strict';
 
-// Declare app level module which depends on views, and components
-var app = angular.module('MyApp', ['ngRoute','monospaced.qrcode'])
-.config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
-  $locationProvider.hashPrefix('!');
-  $routeProvider.otherwise({redirectTo: '/view1'});
-}]);
+///Angular.module is a global place for creating, registering and retrieving Angular modules
+// 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
+// the 2nd parameter is an array of 'requires'
+var app = angular.module('MyGeneratorApp', ['monospaced.qrcode','angularScreenfull']).run(function($rootScope) {
+  
+});
+
+if(typeof SETTINGS !== "undefined")
+  app.constant("SETTINGS", SETTINGS);

@@ -1,19 +1,25 @@
 app.controller("reader.controller", function ($rootScope, $scope, $interval, AuthService, SETTINGS) {
 
-  // Some private variables used for the QR reader
+  // Some private variables used for the QR reader.
   var refreshRate = SETTINGS.ClientRefreshRate;
   var refreshInterval = null;
 
   var video = null;
   var canvas = null;
 
+  /**
+   * Delcration of the scope-bound variables
+   */
   $scope.isAuth = false;
   $scope.private = null;
 
-  // The status is reflected in the scope
   $scope.isReaderReady = false;
   $scope.readerStatus = "Point the QR code twords the camera!"
 
+/**
+ * This is triggerd when the public token is read and confirm as a valid token
+ * @param {string} token 
+ */
   var onDetected = function(token){
       $scope.readerStatus = "Your code is " + token + "";
       AuthService.validate(token).then(function(r){
@@ -27,6 +33,10 @@ app.controller("reader.controller", function ($rootScope, $scope, $interval, Aut
       })
   }
 
+  /**
+   * This is triggerd on an interval loop to update the canvas
+   * and check if the cammera has the QR code in view
+   */
    var onRefresh = function(){
 
     if (video && video.videoWidth > 0) {
@@ -57,6 +67,10 @@ app.controller("reader.controller", function ($rootScope, $scope, $interval, Aut
     }
    }
 
+   /**
+    * This is trigger when the cammera stream has started
+    * It initialises most of the application logic
+    */
   $scope.onStream = function (stream) {
 
     console.log('Stream Started',stream);
@@ -70,6 +84,10 @@ app.controller("reader.controller", function ($rootScope, $scope, $interval, Aut
 
   }
 
+  /**
+   * This function is bound to the restart button
+   * It restarts the entire application
+   */
   $scope.restart = function(){
     $scope.isAuth = false;
     $scope.private = null;
